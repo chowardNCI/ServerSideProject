@@ -1,0 +1,19 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<% cache ['store', Tea.latest] do %>
+  <% @teas.each do |tea| %>
+    <% cache ['entry', tea] do %>  
+      <div class="entry">
+        <%= image_tag(tea.image_url) %>
+        <h3><%= tea.name %></h3>
+        <%= sanitize(tea.description) %>
+        <div class="price_line">
+          <span class="price"><%= number_to_currency(tea.price) %></span>
+          <%= button_to 'Add to Cart', order_items_path(tea_id: tea) %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

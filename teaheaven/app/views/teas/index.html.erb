@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Teas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Category</th>
+      <th>Strength</th>
+      <th>Country</th>
+      <th>Price</th>
+      <th>Description</th>
+      <th>Stock</th>
+      <th>Image url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @teas.each do |tea| %>
+      <tr>
+        <td><%= tea.name %></td>
+        <td><%= tea.category %></td>
+        <td><%= tea.strength %></td>
+        <td><%= tea.country %></td>
+        <td><%= tea.price %></td>
+        <td><%= tea.description %></td>
+        <td><%= tea.stock %></td>
+        <td><%= tea.image_url %></td>
+        <td><%= link_to 'Show', tea %></td>
+        <td><%= link_to 'Edit', edit_tea_path(tea) %></td>
+        <td><%= link_to 'Destroy', tea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tea', new_tea_path %>

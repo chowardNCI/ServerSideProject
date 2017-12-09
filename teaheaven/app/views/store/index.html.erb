@@ -2,18 +2,21 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
+<div class="col-m-12 col-12 mainTeaContent">
+
 <% cache ['store', Tea.latest] do %>
   <% @teas.each do |tea| %>
     <% cache ['entry', tea] do %>  
-      <div class="entry">
-        <%= image_tag(tea.image_url) %>
+      <!--<div class="entry"> -->
+        <%= image_tag(tea.image_url, :class=>'teaImg', :title=>tea.name, :alt=>'Image of tea') %>
         <h3><%= tea.name %></h3>
         <%= sanitize(tea.description) %>
         <div class="price_line">
           <span class="price"><%= number_to_currency(tea.price) %></span>
-          <%= button_to 'Add to Cart', order_items_path(tea_id: tea) %>
+          <%= button_to 'Add to Cart', order_items_path(tea_id: tea), remote: true %>
         </div>
-      </div>
+      <!-- </div> -->
     <% end %>
   <% end %>
 <% end %>
+</div>

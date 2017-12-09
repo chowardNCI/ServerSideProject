@@ -1,0 +1,9 @@
+<% if order_item == @current_item %>
+<div id="current_item">
+<% else %>
+<div>
+<% end %>
+<ul>
+<li><%= order_item.quantity %> &times <%= order_item.tea.name %> <%= number_to_currency(order_item.total_price) %> </li>
+</ul>
+</div>

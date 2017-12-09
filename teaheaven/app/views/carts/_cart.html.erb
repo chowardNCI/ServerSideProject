@@ -1,0 +1,8 @@
+
+<h2>Your Cart</h2>
+
+<%= render(cart.order_items) %>
+
+<%= number_to_currency(cart.total_price) %>
+
+<%= button_to 'Empty cart', cart, method: :delete, data: {confirm: 'Are you sure you want to empty your cart?'} %>

@@ -13,3 +13,411 @@
  *= require_tree .
  *= require_self
  */
+
+/* citations
+w3schools CSS 1. (2017, 11 25). CSS Tutorial. Retrieved from www.w3schools.com: https://www.w3schools.com/css/default.asp
+w3schools CSS 2. (2017, 12 1). Responsive Web Design Introduction. Retrieved from www.w3schools.com: https://www.w3schools.com/css/css_rwd_intro.asp
+w3schools CSS3 1. (2017, 11 25). CSS3 Introduction. Retrieved from www.w3schools.com: https://www.w3schools.com/css/css3_intro.asp
+w3schools CSS3 2. (2017, 12 5). CSS3 Animations. Retrieved from www.w3schools.com: https://www.w3schools.com/css/css3_animations.asp
+w3schools HowTo. (2017, 12 5). How to shake an image. Retrieved from www.w3schools.com: https://www.w3schools.com/howto/howto_css_shake_image.asp
+w3schools JS 4. (2017, 12 5). How to create a slideshow. Retrieved from www.w3schools.com: https://www.w3schools.com/howto/howto_js_slideshow.asp
+*/
+
+/*default styling will be for mobile devices and then overrides for tablet and desktop */
+/* makes sure that the padding and border are included in the total width and height of the elements */
+* {
+    box-sizing: border-box;
+}
+
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+.header {
+    color: #ffffff;
+    padding: 15px;
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+}
+
+
+body {
+    background-color: white;
+}
+
+.footerTop {
+    text-align:right;
+}
+
+p {    
+    font-size: 0.75em;
+}
+h3{
+    font-size: 75%;
+}
+#address{
+    text-align:center;
+}
+/* Default column settings 
+     Apply to all columns (with class name starting with 'col-' */
+[class*="col-"] {
+	width: 100%;
+	float: left;
+	padding: 15px;
+	/*border: 1px solid red;*/
+}  
+
+/* clear the flow set for columns so elements following are not affected */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+} 
+
+
+/* START images START*/
+    img {
+        width:auto;
+        height: auto;	
+    } 
+
+    .ownerImage {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width:50%;
+        height: auto;
+    }
+
+    .logoImage {
+        display: block;
+        margin-right: auto;
+        width:50%;
+        height: auto;
+    } 
+    .emailImg{
+        width:25%;
+        height: auto;
+    } 
+
+    .teaImg
+    {
+        float: left;
+        width:30%;
+        height:30%;
+        margin-right:3%;
+        margin-bottom:auto;
+    }
+
+    .sendCatalogueAnimation {
+        display: none;
+    }
+
+    .telephoneAnimation{
+        display:none;
+    }
+
+/* END images END*/
+.mainTeaContent {     
+    text-align:justify;
+}  
+
+
+
+/* START drop down menu START*/
+ /* Dropdown menu */
+ /* from w3 schools */
+    .dropdownMenu {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdownMenu-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 180px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdownMenu-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdownMenu-content a:hover {
+        background-color: lightgrey
+    } 
+
+    /* Show the dropdown menu on hover */
+    .dropdownMenu:hover .dropdownMenu-content {
+        display: block;
+    }
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdownMenu:hover .dropbtn {
+        background-color: #3e8e41;
+    }
+
+/* END drop down menu END*/
+
+
+/* Disable the full menu */
+#fullMenu {
+    display: none;
+}
+
+
+.mainContent {
+    text-align: justify;
+}
+
+.catalogueImgContent {
+    display:none;
+}
+
+.teaSlideShowContent{ 
+    display:none;
+
+}
+
+.teaSlideShow {
+    display: none;
+}
+
+.teaSlideShowCredit {
+    display: none;
+}
+
+.formSpacing {
+    display:none;
+}
+
+
+
+/* conditional styling depending on screen size */
+    
+
+/* Desktops */
+@media only screen and (min-width: 768px) 
+{
+
+            .header {
+                position:fixed;
+                float:left;
+                background-color: white;
+                padding: 15px;
+                overflow: hidden;
+                display: block;
+                top:0;
+            }
+
+            .header a{	
+                float: left;
+                display: block;
+                color: rgb(0, 0, 0);
+                text-align: left;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            
+            .col-1 {width: 8.33%;}
+            .col-2 {width: 16.66%;}
+            .col-3 {width: 25%;}
+            .col-4 {width: 33.33%;}
+            .col-5 {width: 41.66%;}
+            .col-6 {width: 50%;}
+            .col-7 {width: 58.33%;}
+            .col-8 {width: 66.66%;}
+            .col-9 {width: 75%;}
+            .col-10 {width: 83.33%;}
+            .col-11 {width: 91.66%;}
+            .col-12 {width: 100%;}
+                        
+            p {    
+                font-size: 1em;
+            }	
+
+
+            h3{
+                font-size: 100%;
+            }
+            /* START images START */
+            img {
+                max-width: 100%;
+                height: auto;
+            } 
+
+            .logoImage {
+                width:50%;
+            } 
+                
+            .ownerImage {
+                width:auto;
+            }
+
+            .ownerImage {
+                overflow: hidden;
+                transition-duration: 0.8s;
+                transition-property: transform;
+            }
+            .ownerImage:hover {
+                transform: rotate(360deg);
+            }
+
+            
+            /* END images */
+           
+
+
+            /*don't show a dropdown menu as screen is wide enough for a full menu */
+            .dropdownMenu {
+                display: none;
+            }
+            
+            
+            
+
+            /*Sreen is wide enough for a full menu */
+            #fullMenu {
+                display: block;
+            }
+
+            #fullMenu a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+        
+            /* Change color of dropdown links on hover */
+            #fullMenu a:hover {
+                background-color: lightgrey;
+            } 
+
+            
+            .mainContent {
+                margin-top: 80px; 
+                padding: 5% 10% 0% 10%;
+                text-align: justify;
+                font-family:verdana;
+                font-size:1vw;
+            }
+
+            .mainContactUsContent {
+                padding: 1% 10% 0% 10%;
+            }
+
+            
+            .mainCatalogueContent {
+                margin-top: 130px;
+                padding: 0% 10% 0% 10%;
+                font-family:verdana;
+                font-size:1vw;
+            }
+            
+            .catalogueImgContent {
+                margin-top: 200px;
+                display:block;
+                width:15%;
+                height:15%;
+            }
+
+            .teaSlideShowContent {
+                
+                margin-top: 200px;
+                display:block;
+                width:15%;
+                height:15%;
+            }
+
+            /* need to ensure there is an initial image shown on page load before carousel kicks in */
+            .teaSlideShowImg1, .teaSlideShowCreditImg1
+            {                
+                display:block;
+            }
+            .mainTeaContent {
+                margin-top: 130px; 
+                padding: 0% 10% 0% 10%;
+                font-family:verdana;
+                font-size:1vw;
+                color: rgb(31, 28, 28);     
+                text-align:justify;
+            }        
+            
+            .teaImg
+            {
+                width:15%;
+                height:15%;
+                margin-right:2%;
+                margin-bottom:2%;
+                transition: all .5s ease-in-out;
+            }
+            .teaImg:hover 
+            { 
+                transform: scale(2); 
+            }
+                  
+
+            .formSpacing {
+                display:inline-block;
+            }
+
+            .sendCatalogueAnimation {
+                top:130px;
+                display:block;
+                width: 8%;
+                height:8%;
+                position: relative;
+                animation-name: envelopeAnimation;
+                animation-duration: 2s;
+                animation-iteration-count: infinite;
+                animation-delay: 5s;
+            }
+
+             
+            .telephoneAnimation {
+                display:inline;
+                width: 10%;
+                height:10%;
+                position: relative;
+                animation: shake 1s; 
+                animation-iteration-count: infinite;                
+            }
+            
+            
+
+} 
+
+@keyframes envelopeAnimation {
+    0%   {
+        left:0%; 
+        top:130px;
+    }
+    100% {
+        left:100%; 
+        top:130px;
+    }
+}
+
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}

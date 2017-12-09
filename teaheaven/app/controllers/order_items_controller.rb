@@ -33,7 +33,8 @@ class OrderItemsController < ApplicationController
     
     respond_to do |format|
       if @order_item.save
-        format.html { redirect_to @order_item.cart }
+        format.html { redirect_to store_url }
+        format.js {@current_item = @order_item }
         format.json { render :show, status: :created, location: @order_item }
       else
         format.html { render :new }

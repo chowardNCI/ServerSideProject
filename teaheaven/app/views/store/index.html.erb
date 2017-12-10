@@ -6,6 +6,13 @@
   <%= render @cart %>
 </div>
 
+<div class="col-m-12 col-3">
+  <%= form_tag(teas_path, :method => "get") do %>
+    <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
 <div class="col-m-12 col-9 mainTeaContent">
 
 <% cache ['store', Tea.latest] do %>

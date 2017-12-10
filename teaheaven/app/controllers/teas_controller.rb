@@ -5,6 +5,11 @@ class TeasController < ApplicationController
   # GET /teas.json
   def index
     @teas = Tea.all
+    
+    if params[:search]
+      @teas = Tea.search(params[:search])
+      @teas = @teas.order("created_at ASC")
+    end
   end
 
   # GET /teas/1

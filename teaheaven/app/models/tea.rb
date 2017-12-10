@@ -8,6 +8,11 @@ class Tea < ActiveRecord::Base
     Tea.order(:updated_at).last
   end
 
+  def self.search(search_for)
+    searchWord = "%" + search_for + "%"
+    Tea.where("upper(name) like upper(?)", searchWord)
+  end
+
 
   private
 

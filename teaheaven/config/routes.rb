@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users
+  get 'home/index'
+
   resources :orders
   resources :order_items
   resources :carts
@@ -6,7 +9,9 @@ Rails.application.routes.draw do
 
   resources :teas
 
-  root 'store#index', as: 'store'
+#  root 'store#index', as: 'store'
+
+  root :to => 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

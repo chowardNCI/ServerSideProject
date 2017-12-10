@@ -200,7 +200,46 @@ h3{
     display:none;
 }
 
+#cart {
+  margin-top:130px;
+}
 
+.order_form {
+
+  fieldset {
+    background: #efe;
+    legend {
+      color: #dfd;
+      background: #141;
+      font-family: sans-serif;
+      padding: 0.2em 1em;
+    }
+  }
+
+  form {
+    label {
+      width: 5em;
+      float: left;
+      text-align: right;
+      padding-top: 0.2em;
+      margin-right: 0.1em;
+      display: block;
+    }
+   
+    select, textarea, input {
+      margin-left: 0.5em;
+    }
+
+    .submit { 
+      margin-left: 4em; 
+    }
+
+    br {
+      display: none;
+    }
+  }
+}  /* END .order_form END */
+ 
 
 /* conditional styling depending on screen size */
     
@@ -364,7 +403,11 @@ h3{
             { 
                 transform: scale(2); 
             }
-                  
+            
+            .order_form {
+              margin-top: 130px;
+              padding: 0% 10% 0% 10%;
+            } 
 
             .formSpacing {
                 display:inline-block;

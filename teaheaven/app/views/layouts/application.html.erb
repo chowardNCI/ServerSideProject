@@ -6,16 +6,43 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<body class='<%= controller.controller_name %> '>
-
 <!--  <%= hidden_div_if(@cart.order_items.empty?, id:'cart') do %> -->
-<div id="cart">
-    <%= render @cart %>
-</div>
   <!-- <% end %> -->
-<%= yield %>
+  
+<body class='<%= controller.controller_name %> '>
+  <div class="row">
+
+    <div class="header">
+      <a href="index.html">
+        <%= image_tag('logo.png', :class=>'logoImage', :alt=>'Tea Heaven Logo', :title=>'Tea Heaven Logo') %>
+      </a>
+      <div id="fullMenu">
+        <a href="index.html">Home</a>
+        <a href="tea.html">Tea</a>
+        <a href="requestCatalogue.html">Request Catalogue</a>
+        <a href="contactUs.html">Contact Us</a>
+      </div>
+    </div>
+
+    <!-- reset floats -->
+    <div class="row">
+
+      <!-- add a dropdown menu -->
+      <div class="dropdownMenu">
+        <div class="dropdownMenu">
+          <%= image_tag('menuSmall.png', :class=>'menuSmallImage', :alt=>'Menu', :title=>'Menu') %>
+          <div class="dropdownMenu-content">
+            <a href="index.html">Home</a>
+            <a href="tea.html">Tea</a>
+            <a href="requestCatalogue.html">Catalogue Request</a>
+            <a href="contactUs.html">Contact Us</a>
+          </div>
+        </div>
+      </div>
+  
+  </div>
+
+  <%= yield %>
 
 </body>
 </html>

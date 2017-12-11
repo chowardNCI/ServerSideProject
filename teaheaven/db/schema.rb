@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171210181828) do
+ActiveRecord::Schema.define(version: 20171211203309) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 20171210181828) do
     t.datetime "updated_at", null: false
     t.string   "telephone"
   end
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "address4"
+    t.string   "address5"
+    t.string   "telephone"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "teas", force: :cascade do |t|
     t.string   "name"

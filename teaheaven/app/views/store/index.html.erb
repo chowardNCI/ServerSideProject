@@ -11,6 +11,17 @@
     <% end %>
   </div>
 
+  <div id="viewTeaOptions">
+    Order by:
+    <%= radio_button_tag(:orderTeaBy, "name", true) %>
+    <%= label_tag(:orderTeaByName, "Name") %>
+    <%= radio_button_tag(:orderTeaBy, "price", false) %>
+    <%= label_tag(:orderTeaByPrice, "Price") %>
+    <%= radio_button_tag(:orderTeaBy, "strength", false) %>
+    <%= label_tag(:orderTeaByStrength, "Strength") %>
+
+  </div>
+
   <% cache ['store', Tea.latest] do %>
     <% @teas.each do |tea| %>
       <% cache ['entry', tea] do %>  

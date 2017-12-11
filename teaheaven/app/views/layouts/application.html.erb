@@ -48,6 +48,12 @@
         </div>
       </div>
    </div>
+<!--
+  <% if user_signed_in? %> 
+    <%= current_user.email %>
+    <%= current_user.created_at %>
+  <% end %>
+-->
 
 <!-- no need to show the cart on the store page as it will have the complete cart already -->
    <% if controller.controller_name != 'store' && controller.controller_name != 'orders' %> 

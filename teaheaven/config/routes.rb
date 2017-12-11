@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :profiles
   devise_for :users
 
 #  get 'site/about'
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
   get '/about' => 'site#about'
   get '/contact' => 'site#contact'
   get '/store' => 'store#index'  
+  get '/signedinuserprofile' => 'profiles#signedinuserprofile'
+
 
 #  root :to => 'home#index'
 

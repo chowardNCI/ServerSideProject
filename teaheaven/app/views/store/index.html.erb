@@ -1,36 +1,32 @@
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
 
 <div class="col-m-12 col-3" id="cart">
   <%= render @cart %>
 </div>
 
-<div class="col-m-12 col-3">
-  <%= form_tag(teas_path, :method => "get") do %>
-    <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
-    <%= submit_tag "Search" %>
-  <% end %>
-</div>
-
 <div class="col-m-12 col-9 mainTeaContent">
+  <div id="search">
+    <%= form_tag(teas_path, :method => "get") do %>
+      <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
+      <%= submit_tag "Search" %>
+    <% end %>
+  </div>
 
-<% cache ['store', Tea.latest] do %>
-  <% @teas.each do |tea| %>
-    <% cache ['entry', tea] do %>  
-      <!--<div class="entry"> -->
+  <% cache ['store', Tea.latest] do %>
+    <% @teas.each do |tea| %>
+      <% cache ['entry', tea] do %>  
         <%= image_tag(tea.image_url, :class=>'teaImg', :title=>tea.name, :alt=>'Image of tea') %>
         <h3><%= tea.name %></h3>
         <%= sanitize(tea.description) %>
         <div class="price_line">
-          <span class="price"><%= number_to_currency(tea.price) %></span>
-          <%= button_to 'Add to Cart', order_items_path(tea_id: tea), remote: true %>
+          <span class="price"><%= number_to_currency(tea.price) %></span> 
+          <% if user_signed_in? %>
+            <%= button_to 'Add to Cart', order_items_path(tea_id: tea), remote: true %>
+          <% end %>
         </div>
 	<p class="footerTop">
           <a href="#top">Top</a>
 	</p>
 	<hr/>
-      <!-- </div> -->
     <% end %>
   <% end %>
 <% end %>

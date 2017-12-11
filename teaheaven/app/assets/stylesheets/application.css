@@ -123,6 +123,9 @@ h3{
     text-align:justify;
 }  
 
+#search{
+float: right;
+}
 
 
 /* START drop down menu START*/
@@ -200,9 +203,6 @@ h3{
     display:none;
 }
 
-#cart {
-  margin-top:130px;
-}
 
 .order_form {
 
@@ -249,7 +249,7 @@ h3{
 {
 
             .header {
-                position:fixed;
+             /*   position:fixed;*/
                 float:left;
                 background-color: white;
                 padding: 15px;
@@ -356,7 +356,6 @@ h3{
 
             
             .mainCatalogueContent {
-                margin-top: 130px;
                 padding: 0% 10% 0% 10%;
                 font-family:verdana;
                 font-size:1vw;
@@ -383,7 +382,6 @@ h3{
                 display:block;
             }
             .mainTeaContent {
-                margin-top: 130px; 
                 padding: 0% 10% 0% 10%;
                 font-family:verdana;
                 font-size:1vw;
@@ -405,7 +403,6 @@ h3{
             }
             
             .order_form {
-              margin-top: 130px;
               padding: 0% 10% 0% 10%;
             } 
 
@@ -414,7 +411,6 @@ h3{
             }
 
             .sendCatalogueAnimation {
-                top:130px;
                 display:block;
                 width: 8%;
                 height:8%;
@@ -442,11 +438,9 @@ h3{
 @keyframes envelopeAnimation {
     0%   {
         left:0%; 
-        top:130px;
     }
     100% {
         left:100%; 
-        top:130px;
     }
 }
 

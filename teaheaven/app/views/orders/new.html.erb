@@ -1,8 +1,14 @@
-<div class="col-m-12 col-12 order_form">
+<div class="col-m-12 col-6 order_form">
+
+  <b>Total</b> <%= number_to_currency(@cart.total_price) %>
+  <%= render(@cart.order_items) %>
+
+</div>
+
+<div class="col-m-12 col-6 order_form">
   <fieldset>
     <legend>Please Enter Your Details</legend>
      <%= render 'form' %>
   </fieldset>
 </div>
-
 <%= link_to 'Back', orders_path %>

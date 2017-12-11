@@ -8,7 +8,6 @@
   
 <body class='<%= controller.controller_name %> '>
   <div class="row">
-
     <div class="header">
       <a href="/about">
         <%= image_tag('logo.png', :class=>'logoImage', :alt=>'Tea Heaven Logo', :title=>'Tea Heaven Logo') %>
@@ -18,6 +17,12 @@
         <a href="/about">About</a>
         <a href="requestCatalogue.html">Request Catalogue</a>
         <a href="/contact">Contact Us</a>
+        <% if user_signed_in? %>
+          <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
+        <% else %>
+          <%= link_to 'Register', new_user_registration_path %>
+          <%= link_to 'Sign in', new_user_session_path %>
+        <% end %>
       </div>
     </div>
 
@@ -33,24 +38,28 @@
             <a href="/about">About</a>
             <a href="requestCatalogue.html">Request Catalogue</a>
             <a href="/contact">Contact Us</a>
+            <% if user_signed_in? %>
+              <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
+            <% else %>
+              <%= link_to 'Register', new_user_registration_path %>
+              <%= link_to 'Sign in', new_user_session_path %>
+            <% end %>
           </div>
         </div>
       </div>
-  
+   </div>
+
+<!-- no need to show the cart on the store page as it will have the complete cart already -->
+   <% if controller.controller_name != 'store' && controller.controller_name != 'orders' %> 
+     Cart: <%= @cart.total_quantity %> item<% if @cart.total_quantity > 1 %>s<% end %> @
+     <%= number_to_currency(@cart.total_price) %>
+   <% end %>
+   
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
+
   </div>
-<div>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-  <%= yield %>
-
-<% if user_signed_in? %>
-  <div>Signed in as ... <%= current_user.email %> (<%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>)
-  </div>
-<% else %>
-  <%= link_to 'Register', new_user_registration_path %> or <%= link_to 'Sign in', new_user_session_path %>
-<% end %>
-
-</body>
+    <%= yield %>
+  </body>
 </html>

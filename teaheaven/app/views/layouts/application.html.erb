@@ -1,24 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html> <html> <head>
   <title>Teaheaven</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+
   
 <body class='<%= controller.controller_name %> '>
   <div class="row">
 
     <div class="header">
-      <a href="index.html">
+      <a href="/about">
         <%= image_tag('logo.png', :class=>'logoImage', :alt=>'Tea Heaven Logo', :title=>'Tea Heaven Logo') %>
       </a>
       <div id="fullMenu">
-        <a href="index.html">Home</a>
-        <a href="tea.html">Tea</a>
+        <a href="/store">Tea shop</a>
+        <a href="/about">About</a>
         <a href="requestCatalogue.html">Request Catalogue</a>
-        <a href="contactUs.html">Contact Us</a>
+        <a href="/contact">Contact Us</a>
       </div>
     </div>
 
@@ -30,10 +29,10 @@
         <div class="dropdownMenu">
           <%= image_tag('menuSmall.png', :class=>'menuSmallImage', :alt=>'Menu', :title=>'Menu') %>
           <div class="dropdownMenu-content">
-            <a href="index.html">Home</a>
-            <a href="tea.html">Tea</a>
-            <a href="requestCatalogue.html">Catalogue Request</a>
-            <a href="contactUs.html">Contact Us</a>
+            <a href="/store">Tea shop</a>
+            <a href="/about">About</a>
+            <a href="requestCatalogue.html">Request Catalogue</a>
+            <a href="/contact">Contact Us</a>
           </div>
         </div>
       </div>

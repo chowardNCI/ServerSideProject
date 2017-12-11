@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
+
   devise_for :users
-  get 'home/index'
+
+#  get 'site/about'
+ # get 'site/contact'
+ # get 'home/index'
+ # get 'store/index'
 
   resources :orders
   resources :order_items
   resources :carts
-  get 'store/index'
-
   resources :teas
 
-#  root 'store#index', as: 'store'
+  root 'store#index', as: 'store'  #default location will be the catalogue
 
-  root :to => 'home#index'
+  get '/about' => 'site#about'
+  get '/contact' => 'site#contact'
+  get '/store' => 'store#index'  
+
+#  root :to => 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

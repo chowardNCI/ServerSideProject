@@ -1,7 +1,8 @@
-<p id="notice"><%= notice %></p>
 
+<div class="col-m-12 col-6">
+Your profile details:
 <p>
-  <strong>Firstname:</strong>
+  <strong>Firstname1:</strong>
   <%= @profile.firstname %>
 </p>
 
@@ -40,10 +41,6 @@
   <%= @profile.telephone %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
+</div>
 <%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>

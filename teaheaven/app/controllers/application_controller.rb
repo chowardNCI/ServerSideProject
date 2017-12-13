@@ -6,8 +6,13 @@ class ApplicationController < ActionController::Base
   include CurrentCart
   before_action :set_cart
 
+  include CurrentProfile
+  before_action :set_profile
+
   def after_sign_in_path_for(resource)
-    "/signedinuserprofile"
+
+    "/previousorders"
+#    "/signedinuserprofile"
   end
 
 end

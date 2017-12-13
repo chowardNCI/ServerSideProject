@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171211203309) do
+ActiveRecord::Schema.define(version: 20171212200304) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -39,7 +39,10 @@ ActiveRecord::Schema.define(version: 20171211203309) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "telephone"
+    t.integer  "user_id"
   end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id"
 
   create_table "profiles", force: :cascade do |t|
     t.string   "firstname"
@@ -83,6 +86,7 @@ ActiveRecord::Schema.define(version: 20171211203309) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.boolean  "isAdmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

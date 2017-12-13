@@ -31,13 +31,17 @@
         <td><%= profile.telephone %></td>
         <td><%= profile.user %></td>
         <td><%= link_to 'Show', profile %></td>
-        <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
-        <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+        <% if current_user.admin? %> 
+          <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
+          <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Profile', new_profile_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Profile', new_profile_path %>
+<% end %>

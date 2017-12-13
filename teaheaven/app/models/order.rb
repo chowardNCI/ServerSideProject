@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
 
   has_many :order_items, dependent: :destroy
+  belongs_to :user
 
   PAYMENT_TYPES = ["Cheque", "Credit Card", "Bank Draft"]
 

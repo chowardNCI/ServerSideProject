@@ -1,13 +1,22 @@
 class OrdersController < ApplicationController
 
   include CurrentCart
+ 
   before_action :set_cart, only: [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+
+
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    if !@current_user.nil?
+      @orders = Order.where('user_id = ?', @current_user.id)
+      @orders = @orders.order("created_at DESC")
+    else
+      redirect_to store_url, notice: "No previous orders"
+    end
+
   end
 
   # GET /orders/1
@@ -34,6 +43,10 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_order_items_from_cart(@cart)
+
+    if !@current_user.nil?
+      @order.user_id = @current_user.id
+    end
 
     respond_to do |format|
       if @order.save
@@ -81,6 +94,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :telephone, :pay_type)
+      params.require(:order).permit(:name, :address, :email, :pay_type, :telephone)
     end
 end

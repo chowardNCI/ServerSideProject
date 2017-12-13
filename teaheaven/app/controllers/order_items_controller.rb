@@ -4,11 +4,14 @@ class OrderItemsController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
+
   # GET /order_items
   # GET /order_items.json
   def index
     @order_items = OrderItem.all
+#@order_items = OrderItem.where("order_id =?", @order_id_test)
   end
+
 
   # GET /order_items/1
   # GET /order_items/1.json

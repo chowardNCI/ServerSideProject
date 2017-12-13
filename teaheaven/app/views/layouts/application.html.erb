@@ -56,7 +56,7 @@
 -->
 
 <!-- no need to show the cart on the store page as it will have the complete cart already -->
-   <% if controller.controller_name != 'store' && controller.controller_name != 'orders' %> 
+   <% if controller.controller_name != 'store' && controller.controller_name != 'orders' && controller.controller_name != 'order_items' %> 
      Cart: <%= @cart.total_quantity %> item<% if @cart.total_quantity > 1 %>s<% end %> @
      <%= number_to_currency(@cart.total_price) %>
    <% end %>

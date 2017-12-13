@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get '/contact' => 'site#contact'
   get '/store' => 'store#index'  
   get '/signedinuserprofile' => 'profiles#signedinuserprofile'
-
+  get '/previousorders' => 'orders#index' 
 
 #  root :to => 'home#index'
 

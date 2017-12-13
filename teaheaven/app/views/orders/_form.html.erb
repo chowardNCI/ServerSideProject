@@ -11,21 +11,24 @@
     </div>
   <% end %>
 
+
+<!-- populate fields from current user profile -->
+
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name, size: 40 %>
+    <%= f.text_field :name, size: 40, :value => (@profile.firstname + ' ' + @profile.lastname) %>
   </div>
   <div class="field">
     <%= f.label 'Delivery Address' %><br>
-    <%= f.text_area :address, rows: 3, cols: 40 %>
+    <%= f.text_area :address, rows: 5, cols: 40, :value => (@profile.address1 + ',' + @profile.address2 + ',' + @profile.address3 + ',' + @profile.address4 + ',' + @profile.address5) %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email, size: 40 %>
+    <%= f.text_field :email, size: 40, :value => @current_user.email %>
   </div>
   <div class="field">
     <%= f.label:telephone %><br>
-    <%= f.text_field :telephone, size: 40 %>
+    <%= f.text_field :telephone, size: 40, :value => @profile.telephone %>
   </div>
   <div class="field">
     <%= f.label 'Payment type' %><br>

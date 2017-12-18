@@ -6,13 +6,17 @@
 <% end %>
 
 <div class="col-m-12 col-9 mainTeaContent">
-  <div id="search">
-    <%= form_tag(teas_path, :method => "get") do %>
-      <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
-      <%= submit_tag "Search" %>
-    <% end %>
-  </div>
 
+  <% if current_user && current_user.isAdmin? %> 
+    <%= link_to 'New Tea', new_tea_path %>
+  <% else %>
+    <div id="search">
+      <%= form_tag(teas_path, :method => "get") do %>
+        <%= text_field_tag :search, params[:search], :placeholder => "Search" %>
+        <%= submit_tag "Search" %>
+      <% end %>
+    </div>
+  <% end %>
 
   <% cache ['store', Tea.latest] do %>
     <% @teas.each do |tea| %>

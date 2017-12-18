@@ -21,23 +21,31 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @tea.price %>
+  <%= number_to_currency(@tea.price) %> per 100g
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @tea.description %>
+  <%= sanitize(@tea.description) %>
 </p>
 
 <p>
-  <strong>Stock:</strong>
-  <%= @tea.stock %>
+  <strong>In Stock:</strong>
+  <% if @tea.stock == true %>
+    Yes
+  <% else %>
+    No
+  <% end %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @tea.image_url %>
+  <%= image_tag(@tea.image_url, :class=>'teaImg', :title=>@tea.name, :alt=>'Image of tea') %>
+  <% if current_user && current_user.isAdmin? %> 
+    <strong>Image url:</strong>
+    <%= @tea.image_url %>
+  <% end %>
 </p>
 
-<%= link_to 'Edit', edit_tea_path(@tea) %> |
-<%= link_to 'Back', teas_path %>
+<% if current_user && current_user.isAdmin? %> 
+  <%= link_to 'Edit', edit_tea_path(@tea) %> |
+<% end %>

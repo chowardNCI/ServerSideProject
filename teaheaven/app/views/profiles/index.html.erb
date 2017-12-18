@@ -17,7 +17,7 @@
         <td><%= profile.lastname %></td>
         <td><%= link_to 'Show', profile %></td>
 
-        <% if current_user.isAdmin? %> 
+        <% if current_user && current_user.isAdmin? %> 
           <td><%= link_to 'Edit', edit_profile_path(profile) %></td>
           <td><%= link_to 'Destroy', profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
@@ -27,6 +27,8 @@
 </table>
 
 <br>
-<% if user_signed_in? %>
-  <%= link_to 'New Profile', new_profile_path %>
+<% if current_user && !current_user.isAdmin? %> 
+  <% if user_signed_in? %>
+    <%= link_to 'New Profile', new_profile_path %>
+  <% end %>
 <% end %>

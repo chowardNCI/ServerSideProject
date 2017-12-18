@@ -30,7 +30,9 @@ class TeasController < ApplicationController
   # POST /teas.json
   def create
     @tea = Tea.new(tea_params)
-
+    if @tea.image_url.length  == 0
+      @tea.image_url = 'michal-grosicki-429171.png'
+    end
     respond_to do |format|
       if @tea.save
         format.html { redirect_to @tea, notice: 'Tea was successfully created.' }

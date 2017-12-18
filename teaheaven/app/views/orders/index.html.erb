@@ -1,6 +1,8 @@
 
 <h1>Previous Orders</h1>
 
+<% if @orders.count > 0 %>
+
 <table class="PreviousOrdersSummary">
   <thead>
     <tr>
@@ -21,5 +23,7 @@
     <% end %>
   </tbody>
 </table>
-
+<% else %>
+<p>No previous orders!</p>
+<% end %>
 <br>

@@ -1,7 +1,9 @@
-
-<div class="col-m-12 col-3" id="cart">
-  <%= render @cart %>
-</div>
+<!-- admin user won't have a cart -->
+<% if !current_user || (current_user && !current_user.isAdmin?) %> 
+  <div class="col-m-12 col-3" id="cart">
+    <%= render @cart %>
+  </div>
+<% end %>
 
 <div class="col-m-12 col-9 mainTeaContent">
   <div id="search">
@@ -11,27 +13,25 @@
     <% end %>
   </div>
 
-  <div id="viewTeaOptions">
-    Order by:
-    <%= radio_button_tag(:orderTeaBy, "name", true) %>
-    <%= label_tag(:orderTeaByName, "Name") %>
-    <%= radio_button_tag(:orderTeaBy, "price", false) %>
-    <%= label_tag(:orderTeaByPrice, "Price") %>
-    <%= radio_button_tag(:orderTeaBy, "strength", false) %>
-    <%= label_tag(:orderTeaByStrength, "Strength") %>
-
-  </div>
 
   <% cache ['store', Tea.latest] do %>
     <% @teas.each do |tea| %>
       <% cache ['entry', tea] do %>  
         <%= image_tag(tea.image_url, :class=>'teaImg', :title=>tea.name, :alt=>'Image of tea') %>
-        <h3><%= tea.name %></h3>
+        <h3><%= tea.name %></h3><p>Strength: <%= tea.strength %><br/>Country of Origin: <%= tea.country %></p>
+
         <%= sanitize(tea.description) %>
         <div class="price_line">
-          <span class="price"><%= number_to_currency(tea.price) %></span> 
-          <% if user_signed_in? %>
-            <%= button_to 'Add to Cart', order_items_path(tea_id: tea), remote: true %>
+          <span class="price"><%= number_to_currency(tea.price) %> per 100g</span>
+          <% if current_user && current_user.isAdmin? %> 
+            <%= link_to 'Edit', edit_tea_path(tea) %>
+            <%= link_to 'Destroy', tea, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% elsif user_signed_in? %>
+            <% if tea.stock? %>
+              <%= button_to 'Add to Cart', order_items_path(tea_id: tea), remote: true %>
+            <% else %>
+              <p>Out of Stock!</p>
+            <% end %>
           <% end %>
         </div>
 	<p class="footerTop">

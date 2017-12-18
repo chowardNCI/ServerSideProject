@@ -70,7 +70,7 @@ class ProfilesController < ApplicationController
   end
 
   def ensure_admin
-    unless current_user && current_user.admin?
+    unless current_user && current_user.isAdmin?
       render :text => "Access Error Message", :status => :unauthorized
     end
   end

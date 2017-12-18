@@ -28,8 +28,10 @@
         <td><%= tea.stock %></td>
         <td><%= tea.image_url %></td>
         <td><%= link_to 'Show', tea %></td>
-        <td><%= link_to 'Edit', edit_tea_path(tea) %></td>
-        <td><%= link_to 'Destroy', tea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user && current_user.isAdmin? %>
+          <td><%= link_to 'Edit', edit_tea_path(tea) %></td>
+          <td><%= link_to 'Destroy', tea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

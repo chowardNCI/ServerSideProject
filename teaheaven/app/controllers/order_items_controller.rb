@@ -5,6 +5,10 @@ class OrderItemsController < ApplicationController
   before_action :set_order_item, only: [:show, :edit, :update, :destroy]
 
 
+  def breakdown(theOrderID)
+    @order_items = OrderItem.where("order_id = ?", theOrderID)
+  end
+
   # GET /order_items
   # GET /order_items.json
   def index
@@ -16,6 +20,7 @@ class OrderItemsController < ApplicationController
   # GET /order_items/1
   # GET /order_items/1.json
   def show
+@order_items = OrderItem.where("order_id = 19")
   end
 
   # GET /order_items/new

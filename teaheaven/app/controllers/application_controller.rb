@@ -10,9 +10,15 @@ class ApplicationController < ActionController::Base
   before_action :set_profile
 
   def after_sign_in_path_for(resource)
-
-    "/previousorders"
-#    "/signedinuserprofile"
+    if current_user && current_user.isAdmin? 
+      store_path
+    else
+      if @profile != nil 
+        "/previousorders"
+      else
+        "/signedinuserprofile"
+      end
+    end
   end
 
 end

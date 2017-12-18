@@ -14,16 +14,25 @@
       </a>
       <div id="fullMenu">
         <a href="/store">Tea shop</a>
-        <a href="/about">About</a>
-        <a href="requestCatalogue.html">Request Catalogue</a>
-        <a href="/contact">Contact Us</a>
+<!-- admins don't care about these -->
+        <% if !current_user || (current_user && !current_user.isAdmin?) %> 
+          <a href="/about">About</a>
+          <a href="/contact">Contact Us</a>
+        <% end %>
         <% if user_signed_in? %>
+          <% if current_user && current_user.isAdmin? %> 
+            <%= link_to 'Profiles', profiles_path %>
+          <% else %>
+            <%= link_to 'View profile', '/signedinuserprofile' %>
+          <% end %>
           <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
         <% else %>
           <%= link_to 'Register', new_user_registration_path %>
           <%= link_to 'Sign in', new_user_session_path %>
         <% end %>
+
       </div>
+
     </div>
 
     <!-- reset floats -->
@@ -35,32 +44,37 @@
           <%= image_tag('menuSmall.png', :class=>'menuSmallImage', :alt=>'Menu', :title=>'Menu') %>
           <div class="dropdownMenu-content">
             <a href="/store">Tea shop</a>
-            <a href="/about">About</a>
-            <a href="requestCatalogue.html">Request Catalogue</a>
-            <a href="/contact">Contact Us</a>
+<!-- admins don't care about these -->
+            <% if !current_user || (current_user && !current_user.isAdmin?) %> 
+              <a href="/about">About</a>
+              <a href="/contact">Contact Us</a>
+            <% end %>
             <% if user_signed_in? %>
               <%= link_to 'Sign out', destroy_user_session_path, :method => :delete%>
             <% else %>
               <%= link_to 'Register', new_user_registration_path %>
               <%= link_to 'Sign in', new_user_session_path %>
             <% end %>
+
           </div>
         </div>
       </div>
    </div>
-<!--
-  <% if user_signed_in? %> 
-    <%= current_user.email %>
-    <%= current_user.created_at %>
-  <% end %>
--->
+<div>
+        <% if current_user %>
+          <p><%= current_user.email %></p>
+        <% end %>
 
-<!-- no need to show the cart on the store page as it will have the complete cart already -->
-   <% if controller.controller_name != 'store' && controller.controller_name != 'orders' && controller.controller_name != 'order_items' %> 
-     Cart: <%= @cart.total_quantity %> item<% if @cart.total_quantity > 1 %>s<% end %> @
-     <%= number_to_currency(@cart.total_price) %>
-   <% end %>
-   
+</div>
+<!-- admin won't have a cart !>
+
+     <!-- no need to show the cart on the store page as it will have the complete cart already -->
+       <% if controller.controller_name != 'store' && controller.controller_name != 'orders' && controller.controller_name != 'order_items' %> 
+         <% if !current_user || (current_user && !current_user.isAdmin?) %> 
+           Cart: <%= @cart.total_quantity %> item<% if @cart.total_quantity > 1 %>s<% end %> @
+           <%= number_to_currency(@cart.total_price) %>
+         <% end %>
+       <% end %>   
    <p class="notice"><%= notice %></p>
    <p class="alert"><%= alert %></p>
 

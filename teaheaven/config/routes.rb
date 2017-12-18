@@ -3,15 +3,11 @@ Rails.application.routes.draw do
   resources :profiles
   devise_for :users
 
-#  get 'site/about'
- # get 'site/contact'
- # get 'home/index'
- # get 'store/index'
-
   resources :orders
   resources :order_items
   resources :carts
   resources :teas
+
 
   root 'store#index', as: 'store'  #default location will be the catalogue
 

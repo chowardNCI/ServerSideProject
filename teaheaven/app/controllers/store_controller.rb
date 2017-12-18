@@ -5,12 +5,22 @@ class StoreController < ApplicationController
 
   def index
 
-    @teas = Tea.order(:name)
+#    if params[:sortBy] == 'price'
+ #     @teas = Tea.order('price')
+  #  elsif params[:sortBy] == 'country'
+   #   @teas = Tea.order('country')
+    #else
+     # @teas = Tea.order('name')
+    #end
 
     if params[:search] 
       @teas = Tea.search(params[:search])
-      @teas = @teas.order("created_at ASC")
+    else
+      @teas = Tea.all()
     end
+    @teas = @teas.order("created_at ASC")
 
   end
+
+
 end

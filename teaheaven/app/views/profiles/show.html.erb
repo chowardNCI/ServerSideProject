@@ -42,5 +42,6 @@ Your profile details:
 </p>
 
 </div>
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
+<% if current_user && current_user.isAdmin? %>
+ <%= link_to 'Edit', edit_profile_path(@profile) %> 
+<% end %>
